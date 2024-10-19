@@ -23,10 +23,10 @@ export function TxForm() {
             const { blockhash } = await connection.getLatestBlockhash();
             transaction.message.recentBlockhash = blockhash;
             const sigResult = await sendTransaction(transaction, connection);
+            console.log(`Signature: ${sigResult}`);
 
             if (sigResult) {
                 setSignature(sigResult)
-                console.log(`Signature: ${sigResult}`);
             }
         } catch (err) {
             console.error("Error:", err)
